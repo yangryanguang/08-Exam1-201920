@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Guang Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -68,11 +68,30 @@ def problem4(number_of_stairs, step_size, starting_point, window):
       :type window:            rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
+
+    for k in range(number_of_stairs):
+        start=starting_point
+        start.attach_to(window)
+        end=rg.Point(starting_point.x+step_size*number_of_stairs,starting_point.y-step_size*number_of_stairs)
+        end.attach_to(window)
+        startv=rg.Point(starting_point.x+k*step_size,starting_point.y-step_size*k)
+        endv=rg.Point(starting_point.x+k*step_size,starting_point.y-step_size*k-step_size)
+        starth=rg.Point(starting_point.x+k*step_size,starting_point.y-step_size*k-step_size)
+        endh=rg.Point(starting_point.x+k*step_size+step_size,starting_point.y-step_size*k-step_size)
+        linev = rg.Line(startv, endv)
+        linev.color='magenta'
+        linev.attach_to(window)
+        lineh=rg.Line(starth,endh)
+        lineh.color='black'
+        lineh.thickness=3
+        linev.thickness=3
+        lineh.attach_to(window)
+    window.render()
 
 
 # -----------------------------------------------------------------------------
